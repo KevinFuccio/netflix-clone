@@ -1,10 +1,10 @@
 import { Component } from "react";
-import {Modal,Button} from "react-bootstrap"
+import ModalComponent from "./ModalComponent";
 
 class CardComponent extends Component {
   state = {
     movieArr: [],
-    text: "CIAOOOO",
+    selector: false,
   };
   async fetchMovie() {
     let response = await fetch(
@@ -19,7 +19,9 @@ class CardComponent extends Component {
     }
   }
   cardSelected() {
-      alert("ciao vita")
+      this.setState({
+        selector: !this.state.selector
+      })
   }
   componentDidMount() {
     this.fetchMovie();
@@ -29,10 +31,10 @@ class CardComponent extends Component {
       <>
         {this.state.movieArr.map((e) => (
         <div className="col mb-2 px-1" key={e.imdbID}>
-           <img className="img-fluid" src={e.Poster} alt="movie picture" style={{width:'200px',height:'308px'}} onClick={(e)=> this.cardSelected(e)} />
+           <img className="img-fluid" src={e.Poster} alt="movie picture" style={{width:'200px',height:'308px'}} onClick={()=> this.cardSelected()} />
         </div>
-          
         ))}
+        {this.state.selector && <ModalComponent/>}
       </>
     );
   }
