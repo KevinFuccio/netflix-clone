@@ -1,4 +1,5 @@
 import { Component } from "react";
+import {Modal,Button} from "react-bootstrap"
 
 class CardComponent extends Component {
   state = {
@@ -17,6 +18,9 @@ class CardComponent extends Component {
       });
     }
   }
+  cardSelected() {
+      alert("ciao vita")
+  }
   componentDidMount() {
     this.fetchMovie();
   }
@@ -25,7 +29,7 @@ class CardComponent extends Component {
       <>
         {this.state.movieArr.map((e) => (
         <div className="col mb-2 px-1" key={e.imdbID}>
-           <img className="img-fluid" src={e.Poster} alt="movie picture" style={{width:'200px',height:'308px'}} />
+           <img className="img-fluid" src={e.Poster} alt="movie picture" style={{width:'200px',height:'308px'}} onClick={(e)=> this.cardSelected(e)} />
         </div>
           
         ))}
