@@ -5,7 +5,7 @@ import {Card} from "react-bootstrap";
 const DetailedMovieComponent = () => {
     const params = useParams();
 
-  const [movie, setMovie] = useState([]);
+  const [movie, setMovie] = useState({});
 
   const fetchSingleMovie = async () => {
     let response = await fetch(
@@ -15,6 +15,7 @@ const DetailedMovieComponent = () => {
     if (response.ok) {
       let data = await response.json();
       setMovie(data);
+      console.log(data);
     } else {
       console.log("error");
     }
@@ -31,9 +32,9 @@ const DetailedMovieComponent = () => {
         <div>Genre: {movie.Genre}. Year: <strong>{movie.Year}</strong></div>
         <div className="mt-3">{movie.Plot}</div>
         <>
-        {/* {movie.Ratings.map((e)=>{
-            <div>ciao</div>
-        })} */}
+        {movie.Ratings && movie.Ratings.map((e,index)=>{
+            return <div key={index} className="mt-3">{e.Source} <strong>{e.Value}</strong></div>
+        })}
         </>
       </Card.Body>
     </Card>
