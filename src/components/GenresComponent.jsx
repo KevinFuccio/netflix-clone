@@ -1,7 +1,6 @@
-import { Component } from "react";
+
 import CardComponent from "./CardComponent";
-class GenresComponent extends Component {
-  render() {
+const GenresComponent = ()=>{
     return (
       <div className="container-fluid px-4">
         <div className="d-flex justify-content-between">
@@ -175,6 +174,6 @@ class GenresComponent extends Component {
       </div>
     );
   }
-}
+
 
 export default GenresComponent;

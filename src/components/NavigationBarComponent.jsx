@@ -1,16 +1,15 @@
-import { Component } from "react";
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.png"
 
-class NavigationBar extends Component {
-  render() {
+const NavigationBar = () =>{
     return (
         <nav
           className="navbar navbar-expand-lg navbar-dark"
           style={{backgroundColor: "#221f1f"}}
         >
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" to="/">
             <img src={logo} style={{width: "100px", height: "55px"}} />
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -26,14 +25,14 @@ class NavigationBar extends Component {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
-                <a className="nav-link font-weight-bold" href="#">
+                <Link className="nav-link font-weight-bold" to="/">
                   Home <span className="sr-only">(current)</span>
-                </a>
+                </Link>
               </li>
               <li className="nav-item active">
-                <a className="nav-link font-weight-bold" href="#">
+                <Link className="nav-link font-weight-bold" to="/tv-shows">
                   TV Shows
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <a className="nav-link font-weight-bold" href="#">
@@ -59,6 +58,6 @@ class NavigationBar extends Component {
         </nav>
     );
   }
-}
+
 
 export default NavigationBar;
