@@ -15,7 +15,6 @@ const DetailedMovieComponent = () => {
     if (response.ok) {
       let data = await response.json();
       setMovie(data);
-      console.log(data);
     } else {
       console.log("error");
     }
@@ -33,7 +32,7 @@ const DetailedMovieComponent = () => {
         <div className="mt-3">{movie.Plot}</div>
         <>
         {movie.Ratings && movie.Ratings.map((e,index)=>{
-            return <div key={index} className="mt-3">{e.Source} <strong>{e.Value}</strong></div>
+            return <div key={index} className="mt-3">{e.Source}: <strong>{e.Value}</strong></div>
         })}
         </>
       </Card.Body>
